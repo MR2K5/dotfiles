@@ -1,0 +1,29 @@
+#!/bin/bash
+
+rel=/opt/llvm-git/bin/
+function usage() {
+    cat <<-EOF
+    Usage: makekernel [--progress] <sourcedir> <target>
+EOF
+    exit 1
+}
+
+if [[ $1 == "--progress" ]] then
+    PROG=./kbuild-progress
+    shift 1
+else
+    PROG=make
+fi
+
+ARGS=("$@")
+ARGC=$#
+
+if [[ ${ARGC} -le 1 ]] then
+    usage
+fi
+
+unset ARGS[0]
+
+$PROG --no-silent -C $1 -j 8 CC=${rel}/clang LD=${rel}/ld.lld AR=${rel}/llvm-ar NM=${rel}/llvm-nm STRIP=${rel}/llvm-strip \
+          OBJCOPY=${rel}/llvm-objcopy OBJDUMP=${rel}/llvm-objdump READELF=${rel}/llvm-readelf \
+          HOSTCC=${rel}/clang HOSTCXX=${rel}/clang++ HOSTAR=${rel}/llvm-ar HOSTLD=${rel}/ld.lld KCFLAGS="-march=native" EXTRAVERSION=-chaotic "${ARGS[@]}"
