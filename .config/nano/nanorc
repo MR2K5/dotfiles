@@ -15,11 +15,6 @@ set afterends
 ## When soft line wrapping is enabled, make it wrap lines at blanks
 ## (tabs and spaces) instead of always at the edge of the screen.
 set atblanks
-# set afterends
-
-## When soft line wrapping is enabled, make it wrap lines at blanks
-## (tabs and spaces) instead of always at the edge of the screen.
-# set atblanks
 
 ## Automatically indent a newly created line to the same number of
 ## tabs and/or spaces as the preceding line -- or as the next line
