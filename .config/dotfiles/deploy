@@ -1,0 +1,22 @@
+#!/usr/bin/fish 
+
+function dotfiles
+    git --git-dir=$HOME/.dotfiles --work-tree=$HOME $argv
+end
+
+if test (count $argv) != 1
+    echo Usage: (status current-filename) [target user]
+    exit 1
+end
+
+echo (status current-filename)
+echo HOME = ~
+echo TARGET = ~$argv[1]
+
+set target $argv[1]
+cd ~
+echo (dotfiles ls-files)
+set files (dotfiles ls-files); or exit 1
+
+sudo -u $target rsync -R -L -p -t $files ~$target/
+
