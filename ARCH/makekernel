@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rel=/opt/llvm-git/bin/
+rel=/usr/bin/
 function usage() {
     cat <<-EOF
     Usage: makekernel [--progress] <sourcedir> <target>
