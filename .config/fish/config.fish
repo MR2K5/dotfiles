@@ -2,12 +2,12 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_term24bit 1
     
-    bind \b backward-kill-word
-    bind \e\[3\;5~ kill-word
-    bind  -k nul accept-autosuggestion
+    bind ctrl-h backward-kill-word
+    bind ctrl-delete kill-word
+    bind ctrl-space accept-autosuggestion
+    bind ctrl-alt-h htop
 
-    abbr -a sctl systemctl
-    abbr -a --set-cursor sysd systemd%
+    set -x LESSPIPE 'lesspipe.sh %s'
 
 end
 
