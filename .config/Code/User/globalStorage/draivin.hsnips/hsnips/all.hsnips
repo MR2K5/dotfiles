@@ -1,0 +1,640 @@
+global
+function math(ctx) {
+    return ctx.scopes.some(s => s == "meta.embedded.math.markdown" || s == "meta.math.block.latex");
+}
+endglobal
+
+context math(context)
+snippet * "*" Ai
+\cdot
+endsnippet
+
+context math(context)
+snippet ^ "^" Ai
+^{$1}$0
+endsnippet
+
+context math(context)
+snippet _ "_" Ai
+_{$1}$0
+endsnippet
+
+context math(context)
+snippet // "//" Ai
+\frac{$1}{$2}$0
+endsnippet
+context math(context)
+snippet d// "d//" Ai
+\dfrac{$1}{$2}$0
+endsnippet
+context math(context)
+snippet t// "t//" Ai
+\tfrac{$1}{$2}$0
+endsnippet
+
+# Calculus
+context math(context)
+snippet #D "derivative" Ai
+\frac{d$1}{d$2} $0
+endsnippet
+context math(context)
+snippet #2D "2nd derivative" Ai
+\frac{d^2$1}{d$2^2} $0
+endsnippet
+
+context math(context)
+snippet #Int "integral" Ai
+\int_{$1}^{$2} $0
+endsnippet
+context math(context)
+snippet #int "integral" Ai
+\int_ $0 
+endsnippet
+
+context math(context)
+snippet #Iint "integral" Ai
+\iint_{$1} $0
+endsnippet
+context math(context)
+snippet #iint "integral" Ai
+\iint_ $0
+endsnippet
+
+context math(context)
+snippet #Iiint "integral" Ai
+\iiint_{$1} $0
+endsnippet
+context math(context)
+snippet #iiint "integral" Ai
+\iiint_ $0
+endsnippet
+
+context math(context)
+snippet #lim "limit" Ai
+\lim_{$1 \to $2} $0
+endsnippet
+
+context math(context)
+snippet #S "sum" Ai
+\sum_{$1}^{$2}$0
+endsnippet
+
+context math(context)
+snippet `(?<=\W)sqrt` "sqrt" A
+\sqrt{$1}$0
+endsnippet
+
+context math(context)
+snippet `(<=?\W)root` "root" A
+\sqrt[$1]{$2}$0
+endsnippet
+
+context math(context)
+snippet #equ "equation" Ai
+\begin{equation}\label{$1} $0 \end{equation}
+endsnippet
+
+# Matrices
+context math(context)
+snippet #bmat "bmatrix" Ai
+\begin{bmatrix}
+$0
+\end{bmatrix}
+endsnippet
+
+# Trig functions
+context math(context)
+snippet `(?<=\W)(sin|cos|tan|sec|csc|cot)` "hyperbolic trig" A
+\\``rv = m[1]``
+endsnippet
+context math(context)
+snippet `(?<=\W)arc(sin|cos|tan|sec|csc|cot)` "hyperbolic trig" A
+\\``rv = m[0]``
+endsnippet
+context math(context)
+snippet `(?<=\W)ar(sin|cos|tan|sec|csc|cot)h` "hyperbolic trig" A
+\\operatorname{``rv = m[0]``}
+endsnippet
+
+#\in is generated
+context math(context)
+snippet `\\inf` "infty" Ai
+\infty
+endsnippet
+
+context math(context)
+snippet `(?<=\W)vec` "vec" A
+\vec{$1}$0
+endsnippet
+context math(context)
+snippet `(?<=\W)bar` "bar" A
+\bar{$1}$0
+endsnippet
+
+# Font switched
+context math(context)
+snippet %bf "bold" Ai
+\mathbf{$1}$0
+endsnippet
+
+context math(context)
+snippet %rm "roman" Ai
+\mathrm{$1}$0
+endsnippet
+
+context math(context)
+snippet %bb "blackboard" Ai
+\mathbb{$1}$0
+endsnippet
+
+# Generated
+context math(context)
+snippet `(?<=\W)alpha` "alpha" A
+\alpha
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@a` "alpha" A
+\alpha
+endsnippet
+
+context math(context)
+snippet `(?<=\W)beta` "beta" A
+\beta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@b` "beta" A
+\beta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)gamma` "gamma" A
+\gamma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@g` "gamma" A
+\gamma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Gamma` "Gamma" A
+\Gamma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@G` "Gamma" A
+\Gamma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)delta` "delta" A
+\delta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@d` "delta" A
+\delta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Delta` "Delta" A
+\Delta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@D` "Delta" A
+\Delta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)epsilon` "epsilon" A
+\epsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@e` "epsilon" A
+\epsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)varepsilon` "varepsilon" A
+\varepsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@ve` "varepsilon" A
+\varepsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)zeta` "zeta" A
+\zeta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@z` "zeta" A
+\zeta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)eta` "eta" A
+\eta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)theta` "theta" A
+\theta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@t` "theta" A
+\theta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)vartheta` "vartheta" A
+\vartheta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@vt` "vartheta" A
+\vartheta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Theta` "Theta" A
+\Theta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@T` "Theta" A
+\Theta
+endsnippet
+
+context math(context)
+snippet `(?<=\W)iota` "iota" A
+\iota
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@i` "iota" A
+\iota
+endsnippet
+
+context math(context)
+snippet `(?<=\W)kappa` "kappa" A
+\kappa
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@k` "kappa" A
+\kappa
+endsnippet
+
+context math(context)
+snippet `(?<=\W)lambda` "lambda" A
+\lambda
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@l` "lambda" A
+\lambda
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Lambda` "Lambda" A
+\Lambda
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@L` "Lambda" A
+\Lambda
+endsnippet
+
+context math(context)
+snippet `(?<=\W)mu` "mu" A
+\mu
+endsnippet
+
+context math(context)
+snippet `(?<=\W)nu` "nu" A
+\nu
+endsnippet
+
+context math(context)
+snippet `(?<=\W)xi` "xi" A
+\xi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Xi` "Xi" A
+\Xi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)pi` "pi" A
+\pi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Pi` "Pi" A
+\Pi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)rho` "rho" A
+\rho
+endsnippet
+
+context math(context)
+snippet `(?<=\W)varrho` "varrho" A
+\varrho
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@vr` "varrho" A
+\varrho
+endsnippet
+
+context math(context)
+snippet `(?<=\W)sigma` "sigma" A
+\sigma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@s` "sigma" A
+\sigma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Sigma` "Sigma" A
+\Sigma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@S` "Sigma" A
+\Sigma
+endsnippet
+
+context math(context)
+snippet `(?<=\W)tau` "tau" A
+\tau
+endsnippet
+
+context math(context)
+snippet `(?<=\W)upsilon` "upsilon" A
+\upsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@u` "upsilon" A
+\upsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Upsilon` "Upsilon" A
+\Upsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@U` "Upsilon" A
+\Upsilon
+endsnippet
+
+context math(context)
+snippet `(?<=\W)phi` "phi" A
+\phi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)varphi` "varphi" A
+\varphi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@vp` "varphi" A
+\varphi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Phi` "Phi" A
+\Phi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)chi` "chi" A
+\chi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)psi` "psi" A
+\psi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Psi` "Psi" A
+\Psi
+endsnippet
+
+context math(context)
+snippet `(?<=\W)omega` "omega" A
+\omega
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@o` "omega" A
+\omega
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Omega` "Omega" A
+\Omega
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@O` "Omega" A
+\Omega
+endsnippet
+
+context math(context)
+snippet `(?<=\W)in` "in" A
+\in
+endsnippet
+
+context math(context)
+snippet `(?<=\W)to` "to" A
+\to
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Re` "Re" A
+\Re
+endsnippet
+
+context math(context)
+snippet `(?<=\W)Im` "Im" A
+\Im
+endsnippet
+
+context math(context)
+snippet `(?<=\W)times` "times" A
+\times
+endsnippet
+
+context math(context)
+snippet `(?<=\W)forall` "forall" A
+\forall
+endsnippet
+
+context math(context)
+snippet `(?<=\W)%A` "forall" A
+\forall
+endsnippet
+
+context math(context)
+snippet `(?<=\W)exists` "exists" A
+\exists
+endsnippet
+
+context math(context)
+snippet `(?<=\W)%E` "exists" A
+\exists
+endsnippet
+
+context math(context)
+snippet `(?<=\W)%inf` "infty" A
+\infty
+endsnippet
+
+context math(context)
+snippet `(?<=\W)cup` "cup" A
+\cup
+endsnippet
+
+context math(context)
+snippet `(?<=\W)cap` "cap" A
+\cap
+endsnippet
+
+context math(context)
+snippet `(?<=\W)notin` "notin" A
+\notin
+endsnippet
+
+context math(context)
+snippet `(?<=\W)neg` "neg" A
+\neg
+endsnippet
+
+context math(context)
+snippet `(?<=\W)wedge` "wedge" A
+\wedge
+endsnippet
+
+context math(context)
+snippet `(?<=\W)&&` "wedge" A
+\wedge
+endsnippet
+
+context math(context)
+snippet `(?<=\W)vee` "vee" A
+\vee
+endsnippet
+
+context math(context)
+snippet `(?<=\W)\|\|` "vee" A
+\vee
+endsnippet
+
+context math(context)
+snippet `(?<=\W)mapsto` "mapsto" A
+\mapsto
+endsnippet
+
+context math(context)
+snippet `(?<=\W)sim` "sim" A
+\sim
+endsnippet
+
+context math(context)
+snippet `(?<=\W)~~` "sim" A
+\sim
+endsnippet
+
+context math(context)
+snippet `(?<=\W)approx` "approx" A
+\approx
+endsnippet
+
+context math(context)
+snippet `(?<=\W)~=` "approx" A
+\approx
+endsnippet
+
+context math(context)
+snippet `(?<=\W)<=` "le" A
+\le
+endsnippet
+
+context math(context)
+snippet `(?<=\W)>=` "ge" A
+\ge
+endsnippet
+
+context math(context)
+snippet `(?<=\W)iff` "iff" A
+\iff
+endsnippet
+
+context math(context)
+snippet `(?<=\W)<=>` "iff" A
+\iff
+endsnippet
+
+context math(context)
+snippet `(?<=\W)=>` "implies" A
+\implies
+endsnippet
+
+context math(context)
+snippet `(?<=\W)ln` "ln" A
+\ln
+endsnippet
+
+context math(context)
+snippet `(?<=\W)exp` "exp" A
+\exp
+endsnippet
+
+context math(context)
+snippet `(?<=\W)del` "nabla" A
+\nabla
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@p` "partial" A
+\partial
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@R` "mathbb{R}" A
+\mathbb{R}
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@N` "mathbb{N}" A
+\mathbb{N}
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@Z` "mathbb{Z}" A
+\mathbb{Z}
+endsnippet
+
+context math(context)
+snippet `(?<=\W)@A` "aleph" A
+\aleph
+endsnippet
+
