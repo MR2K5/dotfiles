@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+build() {
+	TEMP=$(mktemp)
+
+	#grep "^root" /etc/shadow > ${TEMP}
+	#add_file ${TEMP} /etc/shadow 0600
+	#echo "root:x:0:0::/root:/bin/sh" > ${TEMP}
+	#add_file ${TEMP} /etc/passwd 0644
+
+	for file in $(busybox --list); do
+		add_symlink /bin/${file} busybox
+	done	
+	add_binary busybox
+	add_binary sulogin
+	add_binary zstd
+	add_binary unzstd
+
+	# This is started by alt+ArrowUp
+	add_symlink /usr/lib/systemd/system/kbrequest.target emergency.target
+}
+
+help() {
+	cat <<- EOF
+	Adds the root password from /etc/shadow along with busybox, allowing for a root shell in the initrd.
+Should be added before systemd hook, as it contains some overlapping executables and we want to prioritize the systemd ones.
+	EOF
+}
