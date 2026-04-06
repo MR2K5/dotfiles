@@ -37,7 +37,7 @@ function fish_prompt
     # git
     printf "%s%s" (set_color normal) (fish_git_prompt)
 
-    printf "\n"
+    printf "%s\n" (set_color normal)
     
     # Second line
     set ip (ip route get 9.9.9.9 2> /dev/null | string match -rg "src (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"; or echo)

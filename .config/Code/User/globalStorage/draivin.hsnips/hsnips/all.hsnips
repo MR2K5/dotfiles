@@ -1,13 +1,9 @@
 global
 function math(ctx) {
-    return ctx.scopes.some(s => s == "meta.embedded.math.markdown" || s == "meta.math.block.latex");
+    return ctx.scopes.some(s => s.startsWith("meta.embedded.math") 
+        || s.startsWith("meta.math") || s.startsWith("markup.math"));
 }
 endglobal
-
-context math(context)
-snippet * "*" Ai
-\cdot
-endsnippet
 
 context math(context)
 snippet ^ "^" Ai
@@ -23,10 +19,12 @@ context math(context)
 snippet // "//" Ai
 \frac{$1}{$2}$0
 endsnippet
+priority 1
 context math(context)
 snippet d// "d//" Ai
 \dfrac{$1}{$2}$0
 endsnippet
+priority 1
 context math(context)
 snippet t// "t//" Ai
 \tfrac{$1}{$2}$0
@@ -48,7 +46,7 @@ snippet #Int "integral" Ai
 endsnippet
 context math(context)
 snippet #int "integral" Ai
-\int_ $0 
+\int $0 
 endsnippet
 
 context math(context)
@@ -57,7 +55,7 @@ snippet #Iint "integral" Ai
 endsnippet
 context math(context)
 snippet #iint "integral" Ai
-\iint_ $0
+\iint $0
 endsnippet
 
 context math(context)
@@ -66,7 +64,7 @@ snippet #Iiint "integral" Ai
 endsnippet
 context math(context)
 snippet #iiint "integral" Ai
-\iiint_ $0
+\iiint $0
 endsnippet
 
 context math(context)
@@ -85,7 +83,7 @@ snippet `(?<=\W)sqrt` "sqrt" A
 endsnippet
 
 context math(context)
-snippet `(<=?\W)root` "root" A
+snippet `(?<=\W)root` "root" A
 \sqrt[$1]{$2}$0
 endsnippet
 
@@ -145,6 +143,35 @@ endsnippet
 context math(context)
 snippet %bb "blackboard" Ai
 \mathbb{$1}$0
+endsnippet
+
+# Physics
+context math(context)
+snippet `(?<=\W)vb` "vb" A
+\vb{$1}$0
+endsnippet
+context math(context)
+snippet `(?<=\W)va` "va" A
+\va{$1}$0
+endsnippet
+context math(context)
+snippet `(?<=\W)vu` "vu" A
+\vu{$1}$0
+endsnippet
+
+context math(context)
+snippet `(?<=\W)dd` "dd" A
+\dd{$1}$0
+endsnippet
+
+context math(context)
+snippet `(?<=\W)norm` "norm" A
+\norm{$1}$0
+endsnippet
+
+context math(context)
+snippet `(?<=\W)\+-` "pm" A
+\pm
 endsnippet
 
 # Generated
@@ -459,12 +486,12 @@ snippet `(?<=\W)@O` "Omega" A
 endsnippet
 
 context math(context)
-snippet `(?<=\W)in` "in" A
+snippet `(?<=\W)(?<!#)in` "in" A
 \in
 endsnippet
 
 context math(context)
-snippet `(?<=\W)to` "to" A
+snippet `->` "to" A
 \to
 endsnippet
 
