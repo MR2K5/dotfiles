@@ -6,8 +6,9 @@ if status is-interactive
     bind \e\[3\;5~ kill-word
     bind  -k nul accept-autosuggestion
 
-    abbr -a sctl systemctl
-    abbr -a --set-cursor sysd systemd%
+    set -x LESSPIPE 'lesspipe.sh %s'
+    set --path -x PERL5LIB /usr/local/lib/perl5/*/{site_perl,core_perl} /usr/local/share/perl5/site_perl
+    set -ax PATH /usr/local/bin/site_perl/
 
 end
 

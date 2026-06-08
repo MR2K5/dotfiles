@@ -1,7 +1,11 @@
 function fish_prompt
 set last_pipestatus $status 
 
-set grey 707070
+    if test -n "$SSH_TTY"
+        set hostname_color (set_color -r -o bryellow)
+    else
+        set hostname_color (set_color -o bryellow)
+    end
 
 if test $last_pipestatus -eq 0
 set status_color green
